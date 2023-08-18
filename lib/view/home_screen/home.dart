@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
   ];
 
   final List<Widget> navBody = [
-    const HomeScreen(),
+    HomeScreen(),
     const ReminderScreen(),
     const NotesScreen(),
     const QnaScreen(),
