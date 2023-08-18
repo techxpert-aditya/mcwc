@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             (context.screenHeight * 0.4).heightBox,
-            Image.asset(appIcon, height: 150, fit: BoxFit.cover),
-            10.heightBox,
+            Image.asset(appIconColor, height: 150, fit: BoxFit.cover),
+            20.heightBox,
             mcwc.text.color(whiteColor).size(20).fontFamily(bold).make(),
             const Spacer(),
             "Version 1.1.0".text.color(whiteColor).size(16).make(),

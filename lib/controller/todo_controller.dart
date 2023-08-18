@@ -1,7 +1,17 @@
 import 'package:mcwc/const/const.dart';
 
 class TodoController extends GetxController {
-  var todos = <Todo>[].obs;
+  var todos = <Todo>[
+    Todo(
+      title: 'solve the 3rd question',
+    ),
+    Todo(
+      title: 'buy the blaze plan for firebase',
+    ),
+    Todo(
+      title: 'finish the project',
+    ),
+  ].obs;
   TextEditingController textEditingController = TextEditingController();
 
   void addTodo({required String title}) {

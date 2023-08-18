@@ -2,6 +2,7 @@ import 'package:mcwc/controller/todo_controller.dart';
 
 import '../../const/const.dart';
 import '../../widget_common/custom_elevated_button.dart';
+import '../focus_screen/focus_screen.dart';
 import 'components/reminder_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             customElevatedButton(
                     label: enterFocusMode,
-                    onPress: () {},
+                    onPress: () {
+                      Get.to(() => const FocusScreen());
+                    },
                     color: const Color(0xFFD9D9D9),
                     textColor: Colors.black,
                     textSize: 24)
@@ -88,6 +91,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               actions: [
                                 ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      padding: const EdgeInsets.all(8),
+                                      elevation: 0),
                                   onPressed: () {
                                     if (todoController.textEditingController
                                         .text.isNotEmpty) {
