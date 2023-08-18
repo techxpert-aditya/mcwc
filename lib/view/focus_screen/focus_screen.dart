@@ -12,7 +12,7 @@ class FocusScreen extends StatefulWidget {
 
 class _FocusScreenState extends State<FocusScreen> {
   var duration = const Duration(seconds: maxSeconds);
-  static const maxSeconds = 3600;
+  static const maxSeconds = 300;
 
   String twoDigits(int n) => n.toString().padLeft(2, '0');
 
@@ -97,15 +97,7 @@ class _FocusScreenState extends State<FocusScreen> {
               if (isRunning) {
                 null;
               } else {
-                VxBottomSheet.bottomSheetView(context,
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          "How long do you want to focus ?".text.make()
-                        ],
-                      ),
-                    ));
+                // set the max amount of timer here
               }
             }),
           ),

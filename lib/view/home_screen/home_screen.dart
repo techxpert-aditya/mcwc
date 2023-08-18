@@ -1,4 +1,5 @@
 import 'package:mcwc/controller/todo_controller.dart';
+import 'package:mcwc/view/group_chat/group_chat_screen.dart';
 
 import '../../const/const.dart';
 import '../../widget_common/custom_elevated_button.dart';
@@ -21,6 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: "Home".text.color(whiteColor).size(32).fontFamily(bold).make(),
         actions: [
+          IconButton(
+            icon: const CircleAvatar(
+                backgroundColor: whiteColor,
+                foregroundColor: primaryColor,
+                child: Icon(Icons.group)),
+            onPressed: () {
+              Get.to(() => const GroupChatScreen());
+            },
+          ).box.make(),
           IconButton(
             icon: const CircleAvatar(
                 backgroundColor: whiteColor,

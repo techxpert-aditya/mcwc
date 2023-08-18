@@ -1,5 +1,6 @@
 import 'package:mcwc/controller/todo_controller.dart';
 import '../../const/const.dart';
+import '../group_chat/group_chat_screen.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
@@ -17,6 +18,15 @@ class _NotesScreenState extends State<NotesScreen> {
       appBar: AppBar(
           title: notes.text.color(whiteColor).size(32).fontFamily(bold).make(),
           actions: [
+            IconButton(
+              icon: const CircleAvatar(
+                  backgroundColor: whiteColor,
+                  foregroundColor: primaryColor,
+                  child: Icon(Icons.group)),
+              onPressed: () {
+                Get.to(() => const GroupChatScreen());
+              },
+            ).box.make(),
             IconButton(
               icon: const CircleAvatar(
                   backgroundColor: whiteColor,
