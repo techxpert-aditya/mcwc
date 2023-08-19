@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:mcwc/controller/profile_controller.dart';
+
 import '../../const/const.dart';
 import '../../widget_common/custom_elevated_button.dart';
 
@@ -11,6 +13,7 @@ class FocusScreen extends StatefulWidget {
 }
 
 class _FocusScreenState extends State<FocusScreen> {
+  final ProfileController profileController = Get.find<ProfileController>();
   var duration = const Duration(seconds: maxSeconds);
   static const maxSeconds = 120;
 
@@ -84,22 +87,36 @@ class _FocusScreenState extends State<FocusScreen> {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: " Let's focus for"
-                .text
-                .color(fontGreyColor)
-                .fontFamily(bold)
-                .size(40)
-                .make()
-                .box
-                .margin(EdgeInsets.only(top: context.screenHeight * 0.05))
-                .make()
-                .onTap(() {
-              if (isRunning) {
-                null;
-              } else {
-                // set the max amount of timer here
-              }
-            }),
+            child: Column(
+              children: [
+                Obx(
+                  () => profileController.firstName.value.text
+                      .color(darkFontGreyColor)
+                      .fontFamily(bold)
+                      .size(35)
+                      .make()
+                      .box
+                      .margin(EdgeInsets.only(top: context.screenHeight * 0.05))
+                      .make(),
+                ),
+                10.heightBox,
+                " Let's focus together for"
+                    .text
+                    .color(fontGreyColor)
+                    .fontFamily(bold)
+                    .size(30)
+                    .make()
+                    .box
+                    .make()
+                    .onTap(() {
+                  if (isRunning) {
+                    null;
+                  } else {
+                    // set the max amount of timer here
+                  }
+                }),
+              ],
+            ),
           ),
           Center(
             child: Column(

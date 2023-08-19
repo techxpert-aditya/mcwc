@@ -4,7 +4,6 @@ import 'package:mcwc/view/profile_screen/profile_screen.dart';
 
 import '../../const/const.dart';
 import '../../controller/profile_controller.dart';
-import '../../widget_common/custom_elevated_button.dart';
 import '../../widget_common/focus_elevated_button.dart';
 import '../focus_screen/focus_screen.dart';
 import 'components/reminder_tile.dart';
@@ -64,23 +63,28 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-                text: TextSpan(
-              children: <TextSpan>[
-                const TextSpan(
-                    text: "Good Morning, ",
-                    style: TextStyle(
-                        color: fontGreyColor,
-                        fontSize: 20,
-                        fontFamily: semiBold)),
-                TextSpan(
-                    text: profileController.firstName.value,
-                    style: const TextStyle(
-                        color: darkFontGreyColor,
-                        fontSize: 24,
-                        fontFamily: bold)),
-              ],
-            )),
+            Obx(
+              () => Align(
+                alignment: Alignment.center,
+                child: RichText(
+                    text: TextSpan(
+                  children: <TextSpan>[
+                    const TextSpan(
+                        text: "Good Afternoon, ",
+                        style: TextStyle(
+                            color: fontGreyColor,
+                            fontSize: 20,
+                            fontFamily: semiBold)),
+                    TextSpan(
+                        text: profileController.firstName.value,
+                        style: const TextStyle(
+                            color: darkFontGreyColor,
+                            fontSize: 24,
+                            fontFamily: bold)),
+                  ],
+                )),
+              ),
+            ),
             20.heightBox,
             focusElevatedButton(
               label: 'Enter Focus Mode',

@@ -1,10 +1,14 @@
 import 'package:mcwc/const/const.dart';
+import 'package:mcwc/controller/profile_controller.dart';
+
+import '../edit_profile_screen/edit_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ProfileController profileController = Get.find<ProfileController>();
     return Scaffold(
       backgroundColor: lightGreyColor,
       body: SingleChildScrollView(
@@ -50,7 +54,17 @@ class ProfileScreen extends StatelessWidget {
                         IconButton(
                           icon: const Icon(Icons.edit,
                               color: whiteColor, size: 30),
-                          onPressed: () {},
+                          onPressed: () {
+                            profileController.firstNameController.text =
+                                profileController.firstName.value;
+                            profileController.lastNameController.text =
+                                profileController.lastName.value;
+                            profileController.cityController.text =
+                                profileController.city.value;
+                            profileController.countryController.text =
+                                profileController.country.value;
+                            Get.to(() => const EditProfileScreen());
+                          },
                         ),
                       ],
                     )
@@ -69,26 +83,28 @@ class ProfileScreen extends StatelessWidget {
                         .make(),
 
                     // name and location
-                    Column(
-                      children: [
-                        "Laxmi Shah"
-                            .text
-                            .color(whiteColor)
-                            .size(30)
-                            .fontFamily(bold)
-                            .make(),
-                        5.heightBox,
-                        "Mumbai, India"
-                            .text
-                            .color(whiteColor)
-                            .size(20)
-                            .fontFamily(semiBold)
-                            .make(),
-                      ],
-                    )
-                        .box
-                        .margin(const EdgeInsets.only(top: 20, bottom: 10))
-                        .make(),
+                    Obx(
+                      () => Column(
+                        children: [
+                          "${profileController.firstName.value} ${profileController.lastName.value}"
+                              .text
+                              .color(whiteColor)
+                              .size(30)
+                              .fontFamily(bold)
+                              .make(),
+                          5.heightBox,
+                          "${profileController.city.value}, ${profileController.country.value}"
+                              .text
+                              .color(whiteColor)
+                              .size(20)
+                              .fontFamily(semiBold)
+                              .make(),
+                        ],
+                      )
+                          .box
+                          .margin(const EdgeInsets.only(top: 20, bottom: 10))
+                          .make(),
+                    ),
 
                     // reminders, tasks, events, solutions
                     Row(
@@ -246,8 +262,8 @@ class ProfileScreen extends StatelessWidget {
                         .rounded
                         .padding(const EdgeInsets.all(16))
                         .outerShadow
-                        .margin(
-                            const EdgeInsets.only(left: 16, right: 16, top: 20))
+                        .margin(const EdgeInsets.only(
+                            left: 16, right: 16, top: 20, bottom: 20))
                         .make(),
                   ],
                 ),

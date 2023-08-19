@@ -74,12 +74,14 @@ messageDialog({maxWidthForDialog, message, fromMySide = true}) {
                       .roundedFull
                       .make(),
                   5.heightBox,
-                  Get.find<ProfileController>()
-                      .firstName
-                      .value
-                      .text
-                      .size(10)
-                      .make(),
+                  Obx(
+                    () => Get.find<ProfileController>()
+                        .firstName
+                        .value
+                        .text
+                        .size(10)
+                        .make(),
+                  ),
                 ],
               )
             : Container(),
