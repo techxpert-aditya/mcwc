@@ -6,6 +6,7 @@ import 'package:mcwc/view/reminder_screen/reminder_screen.dart';
 
 import '../../controller/home_controller.dart';
 import '../../controller/profile_controller.dart';
+import '../../controller/reminder_controller.dart';
 import '../../widget_common/exit_dialogue.dart';
 
 class Home extends StatelessWidget {
@@ -13,6 +14,7 @@ class Home extends StatelessWidget {
 
   final HomeController controller = Get.put(HomeController());
   final ProfileController profileController = Get.put(ProfileController());
+  final ReminderController reminderController = Get.put(ReminderController());
 
   final List<BottomNavigationBarItem> navBarItems = [
     const BottomNavigationBarItem(

@@ -4,6 +4,7 @@ import 'package:mcwc/view/profile_screen/profile_screen.dart';
 
 import '../../const/const.dart';
 import '../../controller/profile_controller.dart';
+import '../../controller/reminder_controller.dart';
 import '../../widget_common/focus_elevated_button.dart';
 import '../focus_screen/focus_screen.dart';
 import 'components/reminder_tile.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TodoController todoController = Get.put(TodoController());
   final ProfileController profileController = Get.find<ProfileController>();
+  final ReminderController reminderController = Get.find<ReminderController>();
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Get.to(() => const FocusScreen());
               },
               gradient: const LinearGradient(
-                colors: [Colors.lightBlueAccent, primaryColor],
+                colors: [secondaryColor, Colors.lightBlueAccent, primaryColor],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
@@ -119,14 +121,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 .size(20)
                 .make(),
             10.heightBox,
-            Column(
-                children: List.generate(
-              reminderNames.length,
-              (index) => reminderTile(
-                title: reminderNames[index],
-                time: reminderTimes[index],
-              ),
-            )),
+            Obx(
+              () => Column(
+                  children: List.generate(
+                      reminderController.reminderList.length, (index) {
+                if (reminderController.reminderList[index].title != "") {
+                  return reminderTile(
+                    title: reminderController.reminderList[index].title,
+                    time: reminderController.reminderList[index].time,
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              })),
+            ),
             10.heightBox,
             const Divider(),
             10.heightBox,
