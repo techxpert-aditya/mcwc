@@ -1,6 +1,7 @@
 import 'package:mcwc/controller/todo_controller.dart';
 import '../../const/const.dart';
 import '../group_chat/group_chat_screen.dart';
+import '../profile_screen/profile_screen.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
@@ -32,7 +33,9 @@ class _NotesScreenState extends State<NotesScreen> {
                   backgroundColor: whiteColor,
                   foregroundColor: primaryColor,
                   child: Icon(Icons.person)),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const ProfileScreen());
+              },
             ).box.margin(const EdgeInsets.only(right: 16)).make(),
           ]),
       body: Padding(

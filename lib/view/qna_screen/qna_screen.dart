@@ -1,5 +1,6 @@
 import '../../const/const.dart';
 import '../group_chat/group_chat_screen.dart';
+import '../profile_screen/profile_screen.dart';
 
 class QnaScreen extends StatelessWidget {
   const QnaScreen({super.key});
@@ -25,7 +26,9 @@ class QnaScreen extends StatelessWidget {
                     backgroundColor: whiteColor,
                     foregroundColor: primaryColor,
                     child: Icon(Icons.person)),
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => const ProfileScreen());
+                },
               ).box.margin(const EdgeInsets.only(right: 16)).make(),
             ]),
         body: Column(

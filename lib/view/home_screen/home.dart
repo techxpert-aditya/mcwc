@@ -5,12 +5,14 @@ import 'package:mcwc/view/qna_screen/qna_screen.dart';
 import 'package:mcwc/view/reminder_screen/reminder_screen.dart';
 
 import '../../controller/home_controller.dart';
+import '../../controller/profile_controller.dart';
 import '../../widget_common/exit_dialogue.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
 
   final HomeController controller = Get.put(HomeController());
+  final ProfileController profileController = Get.put(ProfileController());
 
   final List<BottomNavigationBarItem> navBarItems = [
     const BottomNavigationBarItem(

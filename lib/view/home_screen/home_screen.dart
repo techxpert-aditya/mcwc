@@ -1,5 +1,6 @@
 import 'package:mcwc/controller/todo_controller.dart';
 import 'package:mcwc/view/group_chat/group_chat_screen.dart';
+import 'package:mcwc/view/profile_screen/profile_screen.dart';
 
 import '../../const/const.dart';
 import '../../widget_common/custom_elevated_button.dart';
@@ -36,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: whiteColor,
                 foregroundColor: primaryColor,
                 child: Icon(Icons.person)),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const ProfileScreen());
+            },
           ).box.margin(const EdgeInsets.only(right: 16)).make(),
         ],
       ),
