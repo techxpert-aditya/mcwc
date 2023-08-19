@@ -1,4 +1,5 @@
 import 'package:mcwc/const/const.dart';
+import 'package:mcwc/controller/profile_controller.dart';
 
 messageDialog({maxWidthForDialog, message, fromMySide = true}) {
   return Row(
@@ -9,16 +10,22 @@ messageDialog({maxWidthForDialog, message, fromMySide = true}) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         !fromMySide
-            ? Image.asset(
-                profile,
-                fit: BoxFit.cover,
+            ? Column(
+                children: [
+                  Image.asset(
+                    profileBoy,
+                    fit: BoxFit.cover,
+                  )
+                      .box
+                      .size(40, 40)
+                      .clip(Clip.antiAlias)
+                      .roundedFull
+                      .margin(const EdgeInsets.only(right: 10))
+                      .make(),
+                  5.heightBox,
+                  "Manoj".text.size(10).make(),
+                ],
               )
-                .box
-                .size(40, 40)
-                .clip(Clip.antiAlias)
-                .roundedFull
-                .margin(const EdgeInsets.only(right: 10))
-                .make()
             : Container(),
         Container(
           constraints: BoxConstraints(
@@ -54,16 +61,27 @@ messageDialog({maxWidthForDialog, message, fromMySide = true}) {
           ).box.margin(const EdgeInsets.symmetric(vertical: 8)).make(),
         ),
         fromMySide
-            ? Image.asset(
-                profile,
-                fit: BoxFit.cover,
+            ? Column(
+                children: [
+                  Image.asset(
+                    profileGirl,
+                    fit: BoxFit.cover,
+                  )
+                      .box
+                      .size(40, 40)
+                      .clip(Clip.antiAlias)
+                      .margin(const EdgeInsets.only(left: 10))
+                      .roundedFull
+                      .make(),
+                  5.heightBox,
+                  Get.find<ProfileController>()
+                      .firstName
+                      .value
+                      .text
+                      .size(10)
+                      .make(),
+                ],
               )
-                .box
-                .size(40, 40)
-                .clip(Clip.antiAlias)
-                .margin(const EdgeInsets.only(left: 10))
-                .roundedFull
-                .make()
             : Container(),
       ]);
 }

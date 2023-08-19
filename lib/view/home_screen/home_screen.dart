@@ -3,7 +3,9 @@ import 'package:mcwc/view/group_chat/group_chat_screen.dart';
 import 'package:mcwc/view/profile_screen/profile_screen.dart';
 
 import '../../const/const.dart';
+import '../../controller/profile_controller.dart';
 import '../../widget_common/custom_elevated_button.dart';
+import '../../widget_common/focus_elevated_button.dart';
 import '../focus_screen/focus_screen.dart';
 import 'components/reminder_tile.dart';
 
@@ -16,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TodoController todoController = Get.put(TodoController());
+  final ProfileController profileController = Get.find<ProfileController>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +30,31 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const CircleAvatar(
                 backgroundColor: whiteColor,
                 foregroundColor: primaryColor,
-                child: Icon(Icons.group)),
+                child: Icon(Icons.chat_rounded)),
             onPressed: () {
               Get.to(() => const GroupChatScreen());
             },
-          ).box.make(),
-          IconButton(
-            icon: const CircleAvatar(
-                backgroundColor: whiteColor,
-                foregroundColor: primaryColor,
-                child: Icon(Icons.person)),
-            onPressed: () {
-              Get.to(() => const ProfileScreen());
-            },
-          ).box.margin(const EdgeInsets.only(right: 16)).make(),
+          ).box.margin(const EdgeInsets.only(right: 12)).make(),
+          // IconButton(
+          //   icon: const CircleAvatar(
+          //       backgroundColor: whiteColor,
+          //       foregroundColor: primaryColor,
+          //       child: Icon(Icons.person)),
+          //   onPressed: () {
+          //     Get.to(() => const ProfileScreen());
+          //   },
+          // ).box.margin(const EdgeInsets.only(right: 16)).make(),
+          Image.asset(profileGirl, height: 40, width: 40)
+              .box
+              .clip(Clip.antiAlias)
+              .roundedFull
+              .margin(
+                const EdgeInsets.only(right: 16),
+              )
+              .make()
+              .onTap(() {
+            Get.to(() => const ProfileScreen());
+          }),
         ],
       ),
       body: SingleChildScrollView(
@@ -50,17 +64,48 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            customElevatedButton(
-                    label: enterFocusMode,
-                    onPress: () {
-                      Get.to(() => const FocusScreen());
-                    },
-                    color: const Color(0xFFD9D9D9),
-                    textColor: Colors.black,
-                    textSize: 24)
-                .box
-                .outerShadowLg
-                .make(),
+            RichText(
+                text: TextSpan(
+              children: <TextSpan>[
+                const TextSpan(
+                    text: "Good Morning, ",
+                    style: TextStyle(
+                        color: fontGreyColor,
+                        fontSize: 20,
+                        fontFamily: semiBold)),
+                TextSpan(
+                    text: profileController.firstName.value,
+                    style: const TextStyle(
+                        color: darkFontGreyColor,
+                        fontSize: 24,
+                        fontFamily: bold)),
+              ],
+            )),
+            20.heightBox,
+            focusElevatedButton(
+              label: 'Enter Focus Mode',
+              onPress: () {
+                Get.to(() => const FocusScreen());
+              },
+              gradient: const LinearGradient(
+                colors: [Colors.lightBlueAccent, primaryColor],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+              textColor: whiteColor,
+              textSize: 24,
+            ).box.shadow.make(),
+            // customElevatedButton(
+            //         label: enterFocusMode,
+            //         onPress: () {
+            //           Get.to(() => const FocusScreen());
+            //         },
+            //         color: const Color(0xFFD9D9D9),
+            //         textColor: Colors.black,
+            //         textSize: 24)
+            //     .box
+            //     .outerShadowLg
+            //     .make(),
             10.heightBox,
             const Divider(),
             10.heightBox,

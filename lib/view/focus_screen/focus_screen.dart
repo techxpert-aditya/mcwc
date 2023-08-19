@@ -12,7 +12,7 @@ class FocusScreen extends StatefulWidget {
 
 class _FocusScreenState extends State<FocusScreen> {
   var duration = const Duration(seconds: maxSeconds);
-  static const maxSeconds = 300;
+  static const maxSeconds = 120;
 
   String twoDigits(int n) => n.toString().padLeft(2, '0');
 
@@ -84,7 +84,7 @@ class _FocusScreenState extends State<FocusScreen> {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: "Let's focus for"
+            child: " Let's focus for"
                 .text
                 .color(fontGreyColor)
                 .fontFamily(bold)

@@ -23,20 +23,31 @@ class _NotesScreenState extends State<NotesScreen> {
               icon: const CircleAvatar(
                   backgroundColor: whiteColor,
                   foregroundColor: primaryColor,
-                  child: Icon(Icons.group)),
+                  child: Icon(Icons.chat_rounded)),
               onPressed: () {
                 Get.to(() => const GroupChatScreen());
               },
-            ).box.make(),
-            IconButton(
-              icon: const CircleAvatar(
-                  backgroundColor: whiteColor,
-                  foregroundColor: primaryColor,
-                  child: Icon(Icons.person)),
-              onPressed: () {
-                Get.to(() => const ProfileScreen());
-              },
-            ).box.margin(const EdgeInsets.only(right: 16)).make(),
+            ).box.margin(const EdgeInsets.only(right: 12)).make(),
+            // IconButton(
+            //   icon: const CircleAvatar(
+            //       backgroundColor: whiteColor,
+            //       foregroundColor: primaryColor,
+            //       child: Icon(Icons.person)),
+            //   onPressed: () {
+            //     Get.to(() => const ProfileScreen());
+            //   },
+            // ).box.margin(const EdgeInsets.only(right: 16)).make(),
+            Image.asset(profileGirl, height: 40, width: 40)
+                .box
+                .clip(Clip.antiAlias)
+                .roundedFull
+                .margin(
+                  const EdgeInsets.only(right: 16),
+                )
+                .make()
+                .onTap(() {
+              Get.to(() => const ProfileScreen());
+            }),
           ]),
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
